@@ -1,0 +1,13 @@
+<div id="result">
+    <div class="header" data-ng-bind="taskId"></div>
+    <div data-ng-repeat="row in resultArray">
+        <div data-ng-click="toggleRow($index);"
+             ng-class="{'inactive' : inactiveRows.indexOf($index) != -1 || disabledRows.indexOf($index) != -1}">
+            <div data-ng-class="{last: $last}" data-ng-repeat="entry in row">
+                <div data-ng-style="{width : ( (100 / row.length - 0.1) + '%' ) }" ng-class="entry.css" class="resultEntry"
+                     data-ng-bind="entry.value">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+[
+    {
+        "username": "User1",
+        "type": "A",
+        "amount": 1
+    },
+    {
+        "username": "User1",
+        "type": "K",
+        "amount": 2
+    },
+    {
+        "username": "User1",
+        "type": "U",
+        "amount": 3
+    },
+    {
+        "username": "User1",
+        "type": "T",
+        "amount": 4
+    },
+    {
+        "username": "User2",
+        "type": "A",
+        "amount": 5
+    },
+    {
+        "username": "User2",
+        "type": "K",
+        "amount": 6
+    },
+    {
+        "username": "User2",
+        "type": "U",
+        "amount": 7
+    },
+    {
+        "username": "User2",
+        "type": "T",
+        "amount": 8
+    },
+    {
+        "username": "User3",
+        "type": "K",
+        "amount": 9
+    },
+    {
+        "username": "User3",
+        "type": "U",
+        "amount": 10
+    },
+    {
+        "username": "User4",
+        "type": "A",
+        "amount": 11
+    },
+    {
+        "username": "User4",
+        "type": "K",
+        "amount": 12
+    },
+    {
+        "username": "User4",
+        "type": "U",
+        "amount": 13
+    },
+    {
+        "username": "User4",
+        "type": "T",
+        "amount": 14
+    }
+]

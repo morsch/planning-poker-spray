@@ -1,0 +1,22 @@
+[
+    {
+        "username": "User1",
+        "type": "A",
+        "amount": 1
+    },
+    {
+        "username": "User1",
+        "type": "K",
+        "amount": 2
+    },
+    {
+        "username": "User1",
+        "type": "U",
+        "amount": 3
+    },
+    {
+        "username": "User1",
+        "type": "T",
+        "amount": 4
+    }
+]

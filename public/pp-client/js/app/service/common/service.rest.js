@@ -1,0 +1,54 @@
+var restService = angular.module('pp.service.rest', ['restangular'], function () {
+});
+
+restService.constant('restConstants', {
+    endpoint: 'http://localhost:8080',
+    testEndpoint: 'http://localhost:63342/pp-client/js/app/json/',
+    suffix: '',
+    /**
+     * Set testMode var to true, to enable test mode.
+     * This will support the application with sample json data applied in /js/app/json/* folders.
+     * As TestUsers use User1/User2/User3 as username. Only Data is available in TestTeam!/TestTaskTeam1
+     */
+    testMode: false
+});
+
+restService.factory('restService', ['Restangular', 'restConstants', function (Restangular, restConstants) {
+
+    if (restConstants.testMode) {
+        Restangular.setBaseUrl(restConstants.testEndpoint);
+        restConstants.suffix = '.json';
+    } else {
+        Restangular.setBaseUrl(restConstants.endpoint);
+    }
+
+
+    Restangular.setDefaultHeaders({
+        'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate',
+        'Content-Type': 'application/json; charset="utf-8"'
+    });
+    Restangular.addFullRequestInterceptor(function (element, operation, route, url, headers, params, httpConfig) {
+
+        return {
+            element: element,
+            params: params,//_.extend(params, {single: true}),
+            headers: headers,
+            httpConfig: httpConfig
+        };
+    });
+
+    return {
+
+        findOne: function (resource, id) {
+            return Restangular.one(resource + restConstants.suffix, id).get();
+        },
+
+        findAll: function (resource) {
+            return Restangular.all(resource + restConstants.suffix).getList();
+        },
+
+        post: function (resource, data) {
+            return Restangular.one(resource + restConstants.suffix).customPOST(data, '', {}, {'Content-Type': 'application/json; charset=UTF-8'});
+        }
+    };
+}]);

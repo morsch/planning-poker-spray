@@ -1,0 +1,10 @@
+<div id="teams">
+    <input placeholder="Username" name="username" data-ng-click="setUsername('')" data-ng-model="$root.username" />
+
+    <div data-ng-repeat="team in teams">
+        <div class="button" data-ng-class="{'green' : username, 'red' : !username}" data-ng-click="chooseTeam(team.name)">
+            <span data-ng-bind="team.name"></span>
+            <span class="count" data-ng-bind-template="{{team.count}}"></span>
+        </div>
+    </div>
+</div>

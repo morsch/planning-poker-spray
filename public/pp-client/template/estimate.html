@@ -1,0 +1,7 @@
+<div id="estimate">
+    <div class="header" data-ng-bind="taskId"></div>
+    <div data-ng-repeat="estimate in estimates">
+           <input type="number" placeholder="{{estimate.type}}" data-ng-model="estimate.amount" data-ng-blur="pushEstimate(estimate)">
+    </div>
+    <div data-ng-if="estimates" data-ng-class="{'green' : !failure(), 'red' : failure()}" class="button" data-ng-click="ready()">Ready!</div>
+</div>

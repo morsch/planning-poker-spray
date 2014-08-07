@@ -1,0 +1,11 @@
+<div id="tasks">
+    <div class="header" data-ng-bind-template="Tasks - {{teamName}}"></div>
+    <div class="placeholder" data-ng-if="!tasks">Loading tasks...</div>
+    <div class="empty" data-ng-if="tasks.length == 0">No tasks</div>
+    <div data-ng-repeat="task in tasks">
+        <div class="button green multiline" data-ng-click="chooseTask(task.title)">
+            <div class="title" data-ng-bind="task.title"></div>
+            <div class="summary" data-ng-bind="task.summary"></div>
+        </div>
+    </div>
+</div>
