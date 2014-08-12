@@ -16,8 +16,7 @@ import java.util.concurrent.TimeUnit
 import scala.util.Success
 import scala.util.Failure
 import agido.pp.spray.tasks.Tasks.Task
-import agido.pp.spray.estimates.Estimates
-import agido.pp.spray.estimates.Estimates.Estimate
+import agido.pp.spray.estimates.Estimate
 import agido.pp.spray.teams.Teams
 import spray.http.StatusCodes.Redirection
 import spray.http.StatusCodes
@@ -70,11 +69,11 @@ class RootActor extends Actor with HttpService {
           val fEstimates = response.mapTo[List[Estimate]]
 
           onSuccess(fEstimates) { estimates =>
-            complete(Estimates.sorted(estimates))
+            complete(Estimate.sorted(estimates))
           }
         }
       } ~
       path("") { redirect("/index.html", StatusCodes.PermanentRedirect)} ~
-      getFromDirectory("/home/schallab/luna-workspace/spray-template/public/pp-client")
+      getFromDirectory("/home/schallab/luna-workspace/planning-poker-spray/public/pp-client")
   }
 }

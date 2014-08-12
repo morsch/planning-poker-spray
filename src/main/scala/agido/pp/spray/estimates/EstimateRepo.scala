@@ -5,23 +5,17 @@ import spray.json._
 import spray.json.DefaultJsonProtocol._
 import spray.httpx.SprayJsonSupport._
 
-object Estimates {
+// replaced by akka-persistence, left here for reference
+trait EstimateRepo {
+	def getEstimates(taskId: String): List[Estimate]
+			
+			def getEstimates(user: String, taskId: String): List[Estimate] =
+			getEstimates(taskId) filter (_.username == user)
+			
+			def setEstimate(task: String, e: Estimate)
+}
 
-  case class Estimate(username: String, `type`: String, amount: Option[Double])
-
-  object Estimate {
-    implicit val jsonformat = jsonFormat3(Estimate.apply)
-    val defaultTypes = List("A", "K", "U", "T")
-  }
-
-  trait EstimateRepo {
-    def getEstimates(taskId: String): List[Estimate]
-
-    def getEstimates(user: String, taskId: String): List[Estimate] =
-      getEstimates(taskId) filter (_.username == user)
-
-    def setEstimate(task: String, e: Estimate)
-  }
+object EstimateRepo {
   
   val dummy = new EstimateRepo {
     def getEstimates(taskId: String) = {
@@ -53,8 +47,4 @@ object Estimates {
   }
 
   val repo = inmem
-
-  def sorted = (_: List[Estimate]) sortBy
-    (estimate => Estimate.defaultTypes.indexOf(estimate.`type`))
-
 }
